@@ -9,7 +9,7 @@ interface MediaGalleryGridProps {
 }
 
 const MediaGalleryGrid: React.FC<MediaGalleryGridProps> = ({ items }) => {
-
+console.log(items)
   if(items.length === 0) {
     return (
       <div className="w-full flex flex-col items-center justify-center">

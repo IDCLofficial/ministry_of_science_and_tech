@@ -1,6 +1,9 @@
 import client from './client';
 import { NewsPost, Ministry, Media } from './types';
 
+export const dynamic = 'force-dynamic';
+
+
 class ContentfulService {
   // Fetch all ministries
   async getMinistries(): Promise<Ministry[]> {
@@ -82,6 +85,8 @@ class ContentfulService {
     }
   }
 
+  
+
   // Fetch a ministry by slug
   async getMinistryBySlug(slug: string): Promise<Ministry | null> {
     try {
@@ -106,6 +111,7 @@ class ContentfulService {
         "fields.ministry.sys.id[exists]": true,
         'fields.ministry.sys.id': id,
         include: 1,
+        
       });
 
       const result = response.items.map((i)=>{
