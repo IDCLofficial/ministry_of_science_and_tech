@@ -1,5 +1,5 @@
-"use client";
 export const dynamic = 'force-dynamic';
+"use client";
 
 import localFont from "next/font/local";
 import "./globals.css";
