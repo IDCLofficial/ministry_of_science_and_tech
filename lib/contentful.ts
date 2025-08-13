@@ -1,8 +1,6 @@
 import client from './client';
 import { NewsPost, Ministry, Media } from './types';
 
-export const dynamic = 'force-dynamic';
-
 
 class ContentfulService {
   // Fetch all ministries
