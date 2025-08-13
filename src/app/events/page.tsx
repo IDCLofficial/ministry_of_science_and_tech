@@ -3,13 +3,17 @@ import EventsListSection from "./EventsListSection";
 import Footer from "../components/Footer";
 import CTASection from "../components/CTASection";
 import PastEvents from "./PastEvents";
+import getEvents from "./eventsList";
+import { Events } from "../../../lib/types";
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const events = await getEvents();
+  console.log(events)
   return (
     <div className="bg-white">
       <EventsHeroSection />
-      <EventsListSection />
-      <PastEvents />
+      <EventsListSection events={events as unknown as Events[]} />
+      <PastEvents events={events as unknown as Events[]}/>
       <CTASection 
         heading="Join us in pioneering a tech-driven future for Imo State."
         subtext="Together, we can foster innovation, empower youth with digital skills, promote research and development, and build smart, sustainable solutions that transform communities and fuel economic growth."

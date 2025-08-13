@@ -226,3 +226,68 @@ export interface Media {
         }
     }
 }
+
+export interface Events {
+        sys: {
+            id: string;
+            type: string;
+            createdAt: string;
+            updatedAt: string;
+        };
+        fields: {
+            eventName: string;
+            briefDescription: string;
+            fullDescription?: string;
+            eventDate: string;
+            location?: string;
+            contactPhoneNumber?: string;
+            bannerImage?: {
+                sys: {
+                    id: string;
+                    type: string;
+                };
+                fields: {
+                    title: string;
+                    description?: string;
+                    file: {
+                        url: string;
+                        fileName: string;
+                        contentType: string;
+                    };
+                };
+            };
+            firstSpeaker?: string;
+            firstSpeakerPicture?: {
+                sys: {
+                    id: string;
+                    type: string;
+                };
+                fields: {
+                    title: string;
+                    description?: string;
+                    file: {
+                        url: string;
+                        fileName: string;
+                        contentType: string;
+                    };
+                };
+            };
+            secondSpeaker?: string;
+            secondSpeakerPicture?: {
+                sys: {
+                    id: string;
+                    type: string;
+                };
+                fields: {
+                    title: string;
+                    description?: string;
+                    file: {
+                        url: string;
+                        fileName: string;
+                        contentType: string;
+                    };
+                };
+            };
+            ministry?: Ministry;
+        };
+    } 
