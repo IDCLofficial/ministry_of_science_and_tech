@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import NewsHeroSection from "./NewsHeroSection";
 import NewsSidebar from "./NewsSidebar";
 import NewsGrid from "./NewsGrid";
