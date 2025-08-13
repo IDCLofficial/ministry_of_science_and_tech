@@ -1,3 +1,5 @@
+import { contentfulService } from "../../../lib/contentful";
+
 type news={
   title: string,
   date: string,
@@ -7,5 +9,12 @@ type news={
 }
 
 const newsList:news[] = [];
+
+const ministryId = "1sOjmVJdowuZ4ZUs23nVQJ"
+
+export async function getNewsList(){
+  const newsList = await contentfulService.getBlogsByMinistry(ministryId);
+  return newsList;
+}
 
 export default newsList; 

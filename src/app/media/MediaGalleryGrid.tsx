@@ -1,17 +1,15 @@
+"use client"
 import React from "react";
 import MediaGalleryCard from "./MediaGalleryCard";
-
-interface MediaItem {
-  image: string;
-  title: string;
-  isVideo?: boolean;
-}
+import { Media } from "../../../lib/types";
+import SearchBar from "../components/SearchBar";
 
 interface MediaGalleryGridProps {
-  items: MediaItem[];
+  items: Media[];
 }
 
 const MediaGalleryGrid: React.FC<MediaGalleryGridProps> = ({ items }) => {
+
   if(items.length === 0) {
     return (
       <div className="w-full flex flex-col items-center justify-center">
@@ -20,11 +18,19 @@ const MediaGalleryGrid: React.FC<MediaGalleryGridProps> = ({ items }) => {
     )
   }
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {items.map((item, idx) => (
-        <MediaGalleryCard key={idx} image={item.image} title={item.title} isVideo={item.isVideo} />
-      ))}
-    </div>
+    <>
+      <SearchBar
+        placeholder="Search"
+        value=""
+        onChange={() => {}}
+        onSearch={() => {}}
+      />
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {items.map((item, idx) => (
+          <MediaGalleryCard key={idx} image={`https:${item.fields.img.fields.file.url}`} title={item.fields.title} isVideo={item.fields.img.isVideo} />
+        ))}
+      </div>
+    </>
   );
 };
 
