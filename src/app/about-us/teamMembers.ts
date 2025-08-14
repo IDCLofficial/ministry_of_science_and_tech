@@ -8,7 +8,7 @@ export const teamMembers = [
     {
         name: "Mrs Ikeagwu Catherine Ogechi",
         position: "Permanent Secretary",
-        imgSrc: "/images/permSec.jpeg",
+        imgSrc: "/images/permSec.jpg",
         alt: "permanent secretary" // Use a placeholder or real image if available
     }
     
