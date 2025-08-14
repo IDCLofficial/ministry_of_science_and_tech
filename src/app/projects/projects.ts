@@ -12,6 +12,6 @@ export const projects:project[] = [
     image: "/images/fiber-optics.jpeg",
     ongoing: true,
     description:
-      "PPP-driven ‘Connected Imo Initiative’ with Heartland FibreOptics to extend broadband fibre infrastructure across all 27 LGAs, establishing internet access at schools, markets, LGA offices, and community centres. :contentReference[oaicite:7]{index=7}"
+      "PPP-driven ‘Connected Imo Initiative’ with Heartland FibreOptics to extend broadband fibre infrastructure across all 27 LGAs, establishing internet access at schools, markets, LGA offices, and community centres."
   }
 ];

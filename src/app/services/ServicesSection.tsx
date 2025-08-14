@@ -2,22 +2,22 @@ import ServiceCard from "./ServiceCard";
 
 const services = [
   {
-    imgSrc: "/images/engineering_consultation.jpg",
+    imgSrc: "/images/consultation.jpg",
     title: "Engineering Consultations",
     description: "Access expert technical advice and engineering solutions for innovation, product design, and research implementation."
   },
   {
-    imgSrc: "/images/research_collab.jpg",
+    imgSrc: "/images/research.jpg",
     title: "Research & Development Collaboration",
     description: "Collaborate with research institutions, universities, and industry leaders to drive technological advancement and solve real-world problems."
   },
   {
-    imgSrc: "/images/grants_partnerships.jpg",
+    imgSrc: "/images/grant.jpg",
     title: "Grants and Partnership Opportunities",
     description: "Explore available funding programs, innovation grants, and strategic partnerships to scale your technology-driven initiatives."
   },
   {
-    imgSrc: "/images/science_outreach.jpg",
+    imgSrc: "/images/school.jpg",
     title: "Science Outreach & School Engagement",
     description: "Engage students and educators through science fairs, STEM clubs, workshops, and hands-on innovation activities in schools."
   }

@@ -18,8 +18,8 @@ export default function AboutUs() {
                 altText="Ict image" 
             />
             <MVSSection />   
-            <ObjectivesSection />
             <TeamGridSection members={teamMembers} />
+            <ObjectivesSection />
             <StructuresSection 
                 imgSrc="/images/building.png"
             />

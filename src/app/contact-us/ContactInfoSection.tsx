@@ -3,13 +3,10 @@ import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaFacebookF, FaTwitter, FaInstagra
 
 const contactInfo = {
   address: "Block 3, State Secretariat Complex, P.H Rd, Owerri, Imo State.",
-  email: "not available",
+  email: "imominofsit@gmail.com",
   phone: "08036609638 & 08035820931",
   socials: [
-    { icon: <FaFacebookF />, href: "https://www.facebook.com/Imotcac/" },
-    { icon: <FaTwitter />, href: "#" },
-    { icon: <FaInstagram />, href: "#" },
-    { icon: <FaLinkedinIn />, href: "#" },
+    { icon: <FaFacebookF />, href: "https://www.facebook.com/profile.php?id=100069397411354" },
   ],
 };
 
