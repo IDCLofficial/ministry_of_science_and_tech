@@ -290,4 +290,53 @@ export interface Events {
             };
             ministry?: Ministry;
         };
-    } 
+}
+export interface ProjectAsset {
+    sys: {
+        id: string;
+        type: string;
+    };
+    fields: {
+        title: string;
+        description?: string;
+        file: {
+            url: string; 
+            fileName: string;
+            contentType: string; 
+            details?: {
+                size?: number;
+                image?: { width: number; height: number };
+            };
+        };
+    };
+}
+
+export interface Project {
+    sys: {
+        id: string;
+        type: string;
+        createdAt: string;
+        updatedAt: string;
+    };
+    fields: {
+        projectTitle: string;
+        projectDescription: string;
+        projectImage?: ProjectAsset;
+        ministry?: Ministry;
+        partners?: ProjectAsset[];
+        startDate?: string; 
+        proposedEndDate?: string; 
+    };
+}
+
+export interface ProjectsResponse {
+    sys: { type: string }; 
+    total: number;
+    skip: number;
+    limit: number;
+    items: Project[];
+    includes?: {
+        Entry?: Ministry[]; 
+        Asset?: ProjectAsset[];
+    };
+}

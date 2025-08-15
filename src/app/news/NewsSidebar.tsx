@@ -1,23 +1,36 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { BiChevronDown } from "react-icons/bi";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const categories = [
-  { name: "Latest", key: "latest" },
-  { name: "Trending", key: "trending" },
-];
-
-const popularNews: { title: string; date: string; img: string }[] = [];
+type Category = { key: string; name: string; count: number };
+type Popular = {
+  title: string;
+  img?: string;
+  badge: { fields: { category_name: string } };
+  desc: unknown;
+};
 
 export default function NewsSidebar({
-  active,
-  onChange,
+  categories,
+  popularNews,
+  selectedFilter,
 }: {
-  active: "latest" | "trending";
-  onChange: (key: "latest" | "trending") => void;
+  categories: Category[];
+  popularNews: Popular[];
+  selectedFilter: string;
 }) {
-  const setFilter = (key: "latest" | "trending") => onChange(key);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const setFilter = (key: string) => {
+    const params = new URLSearchParams(Array.from(searchParams.entries()));
+    params.set("filter", key);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   return (
     <aside className="w-full md:w-64 flex-shrink-0 bg-[#F9F9F9] p-2 md:p-4 mb-8 md:mb-0">
@@ -27,16 +40,17 @@ export default function NewsSidebar({
           <BiChevronDown className="text-gray-500 text-[18px] cursor-pointer" />
         </div>
         <div className="flex flex-col gap-2 mt-4" id="dropdown">
-          {categories.map((cat, idx) => (
+          {categories.map((cat) => (
             <button
-              key={idx}
-              type="button"
-              onClick={() => setFilter(cat.key as "latest" | "trending")}
-              className={`w-full flex gap-2 md:gap-3 items-center text-left px-3 py-2 rounded ${
-                active === cat.key ? "bg-green-600 text-white" : "hover:bg-gray-200"
+              key={cat.key}
+              onClick={() => setFilter(cat.key)}
+              className={`w-full flex justify-between items-center text-left text-gray-700 text-xs md:text-[15px] px-1 py-1 rounded ${
+                selectedFilter === cat.key ? "bg-white" : "hover:bg-white/70"
               }`}
+              aria-pressed={selectedFilter === cat.key}
             >
               <span>{cat.name}</span>
+              <span>{cat.count}</span>
             </button>
           ))}
         </div>
@@ -44,16 +58,17 @@ export default function NewsSidebar({
       <div className="mb-6 md:mb-8 max-md:hidden">
         <h3 className="font-medium text-base md:text-[18px] mb-2 md:mb-4">CATEGORIES</h3>
         <ul className="space-y-1 md:space-y-2">
-          {categories.map((cat, idx) => (
-            <li key={idx}>
+          {categories.map((cat) => (
+            <li key={cat.key} className="flex justify-between text-gray-700 text-xs md:text-[15px]">
               <button
-                type="button"
-                onClick={() => setFilter(cat.key as "latest" | "trending")}
-                className={`w-full flex justify-between items-center text-xs md:text-[15px] px-3 py-2 rounded ${
-                  active === cat.key ? "bg-green-600 text-white" : "text-gray-700 hover:bg-gray-200"
+                onClick={() => setFilter(cat.key)}
+                className={`flex justify-between w-full text-left px-1 py-1 rounded ${
+                  selectedFilter === cat.key ? "bg-white font-medium" : "hover:bg-white/70"
                 }`}
+                aria-pressed={selectedFilter === cat.key}
               >
                 <span>{cat.name}</span>
+                <span>{cat.count}</span>
               </button>
             </li>
           ))}
@@ -66,11 +81,11 @@ export default function NewsSidebar({
             <li key={idx} className="flex gap-2 md:gap-3 items-center">
               <Link href={`/news/${news.title}`} className="flex gap-2 md:gap-3 items-center">
                 <div className="w-[50px] h-[50px] relative rounded overflow-hidden flex-shrink-0">
-                  <Image src={news.img} alt={news.title} width={100} height={100} className="object-cover w-full h-full" />
+                  <Image src={`https:${news.img}` || ""} alt={news.title} width={100} height={100} className="object-cover w-full h-full" />
                 </div>
                 <div>
                   <div className="text-xs md:text-[14px] font-medium leading-tight line-clamp-2">{news.title}</div>
-                  <div className="text-[10px] text-gray-500 mt-1">{news.date}</div>
+                  <div className="text-[10px] text-gray-500 mt-1">{news.badge.fields.category_name}</div>
                 </div>
               </Link>
             </li>

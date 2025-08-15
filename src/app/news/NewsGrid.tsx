@@ -1,8 +1,7 @@
-"use client";
 import NewsCard from "./NewsCard";
 import { NewsPost } from "../../../lib/types";
 
-export default function NewsGrid({newsList}: {newsList: NewsPost[]}) {
+export default async function NewsGrid({newsList}: {newsList: NewsPost[]}) {
   if(newsList.length === 0) return(
     <div className="text-center text-dark-primary-body">There is no News available at this time, please check again later.</div>
   )
@@ -13,4 +12,4 @@ export default function NewsGrid({newsList}: {newsList: NewsPost[]}) {
       ))}
     </div>
   );
-}
+} 

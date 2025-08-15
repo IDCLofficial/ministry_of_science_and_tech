@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { NewsPost } from "../../../lib/types";
@@ -8,7 +7,7 @@ export default function NewsCard({ news }: { news: NewsPost }) {
   return (
     <Link href={`/news/${news.fields.title}`} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex flex-col">
       <div className="relative w-full h-48">
-        <Image src={`https:${String(news.fields.featuredImage?.fields.file.url)}` || ""} alt={news.fields.title} fill className="object-cover" />
+        <Image src={`https:${String(news.fields.featuredImage?.fields.file.url)}` || ""} alt={news.fields.title} width={1280} height={1280} className="object-cover h-full w-full object-[50%_20%]" />
         <span className="absolute
          top-3 left-3 bg-green-600 text-white text-xs px-3 py-1 rounded font-semibold">{news.fields.category.fields.category_name}</span>
       </div>
