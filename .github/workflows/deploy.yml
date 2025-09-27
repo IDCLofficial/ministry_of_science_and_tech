@@ -3,11 +3,11 @@ name: Deploy to Production
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 concurrency:
-  group: justice-and-attorney-general
+  group: ministry-of-science-and-tech
 
 env:
   HUSKY: 0
